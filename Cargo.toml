@@ -1,0 +1,21 @@
+[package]
+name = "egui_colorimage_gradients"
+authors = ["Perzium"]
+description = "Wanted gradients in your ColorImage? Now you get it!"
+version = "0.1.0"
+
+edition = "2024"
+license = "MIT"
+
+repository = "https://github.com/Perzium/egui_colorimage_gradients"
+readme = "README.md"
+
+keywords = ["egui", "colorimage", "gradients"]
+categories = ["gui", "visualization"]
+
+[dependencies]
+egui = ">=0.27.0"
+
+[features]
+default = []
+presets = []
