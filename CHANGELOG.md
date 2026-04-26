@@ -1,3 +1,7 @@
+# 0.2.1
+No changes
+(cfg auto doc was removed)
+
 # 0.2.0
 API Change, made it similar to CSS
 
