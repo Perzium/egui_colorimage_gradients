@@ -2,7 +2,7 @@
 name = "egui_colorimage_gradients"
 authors = ["Perzium"]
 description = "Wanted gradients in your ColorImage? Now you get it!"
-version = "0.2.1"
+version = "0.2.2"
 
 edition = "2024"
 license = "MIT"
@@ -16,6 +16,7 @@ categories = ["gui", "visualization"]
 
 [dependencies]
 egui = ">=0.27.0"
+egui_gradients_core = { version = "0.1", path = "../egui_gradients_core" }
 serde = { version = "1.0", features = ["derive"], optional = true }
 
 
@@ -24,7 +25,7 @@ serde = { version = "1.0", features = ["derive"], optional = true }
 serde = ["dep:serde"]
 
 # For people who don't have egui::Direction;
-below_egui_0_34_0 = []
+below_egui_0_34_0 = ["egui_gradients_core/below_egui_0_34_0"]
 
 # Self-explanatory
 default = []

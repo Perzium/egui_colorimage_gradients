@@ -1,0 +1,16 @@
+
+# TABS
+hard_tabs = true
+tab_spaces = 4
+
+# Struct Preferences
+use_field_init_shorthand = true
+brace_style = "PreferSameLine"
+use_small_heuristics = "Max"
+
+# Imports
+imports_granularity = "Crate"
+group_imports = "StdExternalCrate"
+
+# Miscellaneous
+use_try_shorthand = true

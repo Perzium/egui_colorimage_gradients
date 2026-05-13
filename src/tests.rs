@@ -1,23 +1,23 @@
 //	## Internal tests
 //	Not necessary for you to run it, but if you wanna, go ahead.
-//	
+//
 //	If you do, and need to check how the gradient might look, dump to ppm
 //	using a function I used during development.
-//	
+//
 //	```rust
 //	use std::{fs::File, io::{Write, Result}};
-//	
+//
 //	fn dump_to_ppm(img: &egui::ColorImage, filename: &str) -> Result<()> {
 //		let mut file = File::create(filename)?;
-//	
+//
 //		writeln!(file, "P3")?;
 //		writeln!(file, "{} {}", img.size[0], img.size[1])?;
 //		writeln!(file, "255")?;
-//	
+//
 //		for pixel in &img.pixels {
 //			writeln!(file, "{} {} {}", pixel.r(), pixel.g(), pixel.b())?;
 //		}
-//	
+//
 //		Ok(())
 //	}
 //	```
@@ -26,28 +26,28 @@
 //	no standard.
 //	Therefore, I will not be adding it myself, but if you wanted to try it,
 //	then go for it.
-//	
-//	
+//
+//
 //	Run it as a test, it works like a script for some reason:
 //	```rust
 //	#[test]
 //	fn trial() {
 //		use crate::ColorImageGradient;
-//	
+//
 //		let gradient = candy();
 //		let img = egui::ColorImage::gradient([100, 100], gradient);
-//	
+//
 //		let _ = dump_to_ppm(&img, "trial.ppm");
 //	}
 //	```
-//	
+//
 //	Note: I prevented using the `image` crate, as it is QUITE HEAVY.
 //	Just use GIMP to open a `.ppm` file, or find another application which does.
 use crate::*;
 use egui::{Color32, ColorImage};
 
 /// Tests the Linear gradient and rotation
-/// 
+///
 /// Test Details:
 /// - Kind: Linear
 /// - Colors: 2; Black & White
@@ -56,10 +56,7 @@ use egui::{Color32, ColorImage};
 fn test_linear_rotated_weights() {
 	// Verifies 45 degree stretch and weight distribution
 	let size = [10, 10];
-	let colors = &[
-		(Color32::BLACK, None),
-		(Color32::WHITE, None)
-	];
+	let colors = &[(Color32::BLACK, None), (Color32::WHITE, None)];
 
 	let img = ColorImage::linear_gradient(size, GradientAngle::Degree(45.0), colors);
 
@@ -77,7 +74,7 @@ fn test_linear_rotated_weights() {
 }
 
 /// Tests the radial gradient
-/// 
+///
 /// Test Details:
 /// - Kind: Radial
 /// - Colors: 3; Red, Green & Blue
@@ -86,11 +83,7 @@ fn test_linear_rotated_weights() {
 fn test_radial_multi_color() {
 	// Verifies distance based sampling and multi color boundaries
 	let size = [500, 500];
-	let colors = &[
-		(Color32::RED, None),
-		(Color32::GREEN, None),
-		(Color32::BLUE, None)
-	];
+	let colors = &[(Color32::RED, None), (Color32::GREEN, None), (Color32::BLUE, None)];
 
 	let img = ColorImage::radial_gradient(size, None, None, colors);
 
@@ -103,7 +96,7 @@ fn test_radial_multi_color() {
 }
 
 /// Tests the conic gradient
-/// 
+///
 /// Test Details:
 /// - Kind: Conic
 /// - Colors: 2; Black & White
@@ -111,15 +104,12 @@ fn test_radial_multi_color() {
 #[test]
 fn test_conic_wrap() {
 	let size = [100, 100];
-	let colors = &[
-		(Color32::BLACK, None),
-		(Color32::WHITE, None)
-		];
+	let colors = &[(Color32::BLACK, None), (Color32::WHITE, None)];
 
 	let img = ColorImage::conic_gradient(size, None, None, colors);
 
 	// Wrap area
-	// Image: 100 * 100 
+	// Image: 100 * 100
 	// -> Start: 49 * 100 = 4900
 	// -> End: 50 * 100 = 5000
 	assert_eq!(img.pixels[4900].g(), 0);

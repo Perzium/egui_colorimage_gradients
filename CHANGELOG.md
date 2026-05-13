@@ -1,3 +1,11 @@
+# 0.2.2
+Core changes
+
+The blend function still needs major reworking, as I was ~~lazy~~ stuck in another project.
+
+Modified:
+- Moved logic from this crate to the [`core`](https://crates.io/crates/egui_gradients_core) crate
+
 # 0.2.1
 No changes
 (cfg auto doc was removed)
